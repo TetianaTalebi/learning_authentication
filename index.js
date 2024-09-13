@@ -8,16 +8,24 @@ const bcrypt = require('bcrypt');
 //     console.log(`hash: ${hash}`);
 // }
 
-// hashPassword('hello1234');
+// This function is another method to hash a password 
+// we pass in a password and a number of salt rounds
 
-const login = async(pw, hashedPw) => {
-    const result = await bcrypt.compare(pw, hashedPw);
+const hashPassword2 = async(pw) => {
+    const hash2 = await bcrypt.hash(pw, 12);
+    console.log(hash2);
+}
 
-    if (result) {
-        console.log("Logged you in! Successful match!")
-    } else {
-        console.log("Incorrect! Try again!")
-    }
-};
+hashPassword2('hello1234');
 
-login('hello1234', '$2b$12$i/evpc7QE51P42ZvSdJ9..HVqM.7JykoHGb2lVhy0tt8F.xvqrWOy');
+// const login = async(pw, hashedPw) => {
+//     const result = await bcrypt.compare(pw, hashedPw);
+
+//     if (result) {
+//         console.log("Logged you in! Successful match!")
+//     } else {
+//         console.log("Incorrect! Try again!")
+//     }
+// };
+
+// login('hello1234', '$2b$12$i/evpc7QE51P42ZvSdJ9..HVqM.7JykoHGb2lVhy0tt8F.xvqrWOy');
